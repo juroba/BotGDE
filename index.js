@@ -181,54 +181,108 @@ bot.on('message', (message) => {
         for (const [channelID, channel] of channels) {
             for (const [memberID, member] of channel.members) {
                 if (member.roles.find((r) => r.id === EtatMajor)) {
-                    ems.push(member.nickname)
+                    if (member.nickname) {
+                        ems.push(member.nickname)
+                    } else {
+                        ems.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Officier)) {
-                    officiers.push(member.nickname)
+                    if (member.nickname) {
+                        officiers.push(member.nickname)
+                    } else {
+                        officiers.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === SsOff)) {
-                    ssoffs.push(member.nickname)
+                    if (member.nickname) {
+                        ssoffs.push(member.nickname)
+                    } else {
+                        ssoffs.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Grenadier)) {
-                    grenadiers.push(member.nickname)
+                    if (member.nickname) {
+                        grenadiers.push(member.nickname)
+                    } else {
+                        grenadiers.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Chasseur)) {
-                    chasseurs.push(member.nickname)
+                    if (member.nickname) {
+                        chasseurs.push(member.nickname)
+                    } else {
+                        chasseurs.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Moyenne)) {
-                    moyennes.push(member.nickname)
+                    if (member.nickname) {
+                        moyennes.push(member.nickname)
+                    } else {
+                        moyennes.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Jeune)) {
-                    jeunes.push(member.nickname)
+                    if (member.nickname) {
+                        jeunes.push(member.nickname)
+                    } else {
+                        jeunes.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Aux)) {
-                    auxs.push(member.nickname)
+                    if (member.nickname) {
+                        auxs.push(member.nickname)
+                    } else {
+                        auxs.push(member.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Canon)) {
-                    canons.push(member.nickname)
+                    if (member.nickname) {
+                        canons.push(member.nickname)
+                    } else {
+                        canons.push(member.username)
+                    }
                 }
             }
         }
         ems.sort()
         message.channel.send('***Etat Major :***')
-        ems.map((u) => message.channel.send(u))
+        if (ems.length > 0) {
+            ems.map((u) => message.channel.send(u))
+        }
         officiers.sort()
         message.channel.send('***Officiers :***')
-        officiers.map((u) => message.channel.send(u))
+        if (officiers.length > 0) {
+            officiers.map((u) => message.channel.send(u))
+        }
         ssoffs.sort()
         message.channel.send('***Sous-officiers :***')
-        ssoffs.map((u) => message.channel.send(u))
+        if (ssoffs.length > 0) {
+            ssoffs.map((u) => message.channel.send(u))
+        }
         grenadiers.sort()
         message.channel.send('***Grenadiers :***')
-        grenadiers.map((u) => message.channel.send(u))
+        if (grenadiers.length > 0) {
+            grenadiers.map((u) => message.channel.send(u))
+        }
         chasseurs.sort()
         message.channel.send('***Chasseurs :***')
-        chasseurs.map((u) => message.channel.send(u))
+        if (chasseurs.length > 0) {
+            chasseurs.map((u) => message.channel.send(u))
+        }
         moyennes.sort()
         message.channel.send('***Moyennes :***')
-        moyennes.map((u) => message.channel.send(u))
+        if (moyennes.length > 0) {
+            moyennes.map((u) => message.channel.send(u))
+        }
         jeunes.sort()
         message.channel.send('***Jeunes :***')
-        jeunes.map((u) => message.channel.send(u))
+        if (jeunes.length > 0) {
+            jeunes.map((u) => message.channel.send(u))
+        }
         auxs.sort()
         message.channel.send('***Auxiliaires :***')
-        auxs.map((u) => message.channel.send(u))
+        if (auxs.length > 0) {
+            auxs.map((u) => message.channel.send(u))
+        }
         canons.sort()
         message.channel.send('***Artilleurs :***')
-        canons.map((u) => message.channel.send(u))
+        if (canons.length > 0) {
+            canons.map((u) => message.channel.send(u))
+        }
     }
 })
 
-bot.login('NjczNTQ4NTgwMjI0NzYxODc1.XjcW4g.uJu6fKqW4bWPltocdZL1bgLYQEg')
+bot.login('NjczNTQ4NTgwMjI0NzYxODc1.Xjm1LQ.gGTgiB2XxOWgPxmpcKRXr4xJcko')
