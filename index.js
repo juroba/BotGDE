@@ -285,4 +285,4 @@ bot.on('message', (message) => {
     }
 })
 
-bot.login('NjczNTQ4NTgwMjI0NzYxODc1.Xjm1LQ.gGTgiB2XxOWgPxmpcKRXr4xJcko')
+bot.login('NjczNTQ4NTgwMjI0NzYxODc1.XjxCEw.AOplGIki8tRdGgU6EKfj5sxLEUA')

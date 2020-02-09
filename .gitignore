@@ -1,0 +1,5 @@
+.vs/*
+.vs/
+.vs
+node_modules/*
+npm-debug.log
