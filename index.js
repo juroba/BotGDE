@@ -166,6 +166,23 @@ bot.on('message', (message) => {
                 .send("Tu n'as pas le droit d'utiliser le bot")
                 .catch(console.error)
         }
+    } else if (args[0] === '!up') {
+        if (
+            message.member.roles.find(
+                (r) =>
+                    r.id === EtatMajor || r.id === Officier || r.id === SsOff,
+            )
+        ) {
+            message.channel
+                .send(
+                    "Tout va bien, je suis réveillée !",
+                )
+                .catch(console.error)
+        } else {
+            message.channel
+                .send("Tu n'as pas le droit d'utiliser le bot")
+                .catch(console.error)
+        }
     } else if (args[0] === '!presences') {
         const ems = new Array()
         const officiers = new Array()
@@ -176,6 +193,7 @@ bot.on('message', (message) => {
         const jeunes = new Array()
         const auxs = new Array()
         const canons = new Array()
+        const autres = new Array()
         const channels = message.guild.channels.filter(
             (c) => c.type === 'voice',
         )
@@ -185,103 +203,114 @@ bot.on('message', (message) => {
                     if (member.nickname) {
                         ems.push(member.nickname)
                     } else {
-                        ems.push(member.username)
+                        ems.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Officier)) {
                     if (member.nickname) {
                         officiers.push(member.nickname)
                     } else {
-                        officiers.push(member.username)
+                        officiers.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === SsOff)) {
                     if (member.nickname) {
                         ssoffs.push(member.nickname)
                     } else {
-                        ssoffs.push(member.username)
+                        ssoffs.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Grenadier)) {
                     if (member.nickname) {
                         grenadiers.push(member.nickname)
                     } else {
-                        grenadiers.push(member.username)
+                        grenadiers.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Chasseur)) {
                     if (member.nickname) {
                         chasseurs.push(member.nickname)
                     } else {
-                        chasseurs.push(member.username)
+                        chasseurs.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Moyenne)) {
                     if (member.nickname) {
                         moyennes.push(member.nickname)
                     } else {
-                        moyennes.push(member.username)
+                        moyennes.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Jeune)) {
                     if (member.nickname) {
                         jeunes.push(member.nickname)
                     } else {
-                        jeunes.push(member.username)
+                        jeunes.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Aux)) {
                     if (member.nickname) {
                         auxs.push(member.nickname)
                     } else {
-                        auxs.push(member.username)
+                        auxs.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Canon)) {
                     if (member.nickname) {
                         canons.push(member.nickname)
                     } else {
-                        canons.push(member.username)
+                        canons.push(member.user.username)
+                    }
+                } else {
+                    if (member.nickname) {
+                        autres.push(member.nickname)
+                    } else {
+                        autres.push(member.user.username)
                     }
                 }
             }
         }
         ems.sort()
-        message.channel.send('***Etat Major :***')
         if (ems.length > 0) {
+            message.channel.send('***Etat Major :***')
             ems.map((u) => message.channel.send(u))
         }
         officiers.sort()
-        message.channel.send('***Officiers :***')
         if (officiers.length > 0) {
+            message.channel.send('***Officiers :***')
             officiers.map((u) => message.channel.send(u))
         }
         ssoffs.sort()
-        message.channel.send('***Sous-officiers :***')
         if (ssoffs.length > 0) {
+            message.channel.send('***Sous-officiers :***')
             ssoffs.map((u) => message.channel.send(u))
         }
         grenadiers.sort()
-        message.channel.send('***Grenadiers :***')
         if (grenadiers.length > 0) {
+            message.channel.send('***Grenadiers :***')
             grenadiers.map((u) => message.channel.send(u))
         }
         chasseurs.sort()
-        message.channel.send('***Chasseurs :***')
         if (chasseurs.length > 0) {
+            message.channel.send('***Chasseurs :***')
             chasseurs.map((u) => message.channel.send(u))
         }
         moyennes.sort()
-        message.channel.send('***Moyennes :***')
         if (moyennes.length > 0) {
+            message.channel.send('***Moyennes :***')
             moyennes.map((u) => message.channel.send(u))
         }
         jeunes.sort()
-        message.channel.send('***Jeunes :***')
         if (jeunes.length > 0) {
+            message.channel.send('***Jeunes :***')
             jeunes.map((u) => message.channel.send(u))
         }
         auxs.sort()
-        message.channel.send('***Auxiliaires :***')
         if (auxs.length > 0) {
+            message.channel.send('***Auxiliaires :***')
             auxs.map((u) => message.channel.send(u))
         }
         canons.sort()
-        message.channel.send('***Artilleurs :***')
         if (canons.length > 0) {
+            message.channel.send('***Artilleurs :***')
             canons.map((u) => message.channel.send(u))
+        }
+        autres.sort()
+        if (autres.length > 0) {
+            message.channel.send('***Autres :***')
+            autres.map((u) => message.channel.send(u))
         }
     }
 })
