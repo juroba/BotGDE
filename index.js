@@ -18,6 +18,7 @@ const Moyenne = '472510389779955713'
 const Jeune = '472511710247387157'
 const Aux = '477882992887332893'
 const Canon = '476479017911058443'
+const constants = require('./const.js');
 
 bot.on('message', (message) => {
     const args = message.content.split(' ')
@@ -284,5 +285,4 @@ bot.on('message', (message) => {
         }
     }
 })
-
-bot.login('NjczNTQ4NTgwMjI0NzYxODc1.XjxCEw.AOplGIki8tRdGgU6EKfj5sxLEUA')
+bot.login(constants.TOKEN)
