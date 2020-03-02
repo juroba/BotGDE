@@ -13,20 +13,21 @@ const EtatMajor = '472530450490064906'
 const Officier = '472529648849387531'
 const SsOff = '474198680493096962'
 const Grenadier = '472510349124304896'
-const Chasseur = '521109585751179274'
-const Moyenne = '472510389779955713'
-const Jeune = '472511710247387157'
-const Aux = '477882992887332893'
+const Cavalerie = '682526207400476674'
+const Voltigeur = '521109585751179274'
 const Canon = '476479017911058443'
-const constants = require('./const.js');
+const Premiere = '472510389779955713'
+const Seconde = '477882992887332893'
+const Troisieme = '682526866753716227'
+const Quatrieme = '472511710247387157'
+const constants = require('./const.js')
 
 bot.on('message', (message) => {
     const args = message.content.split(' ')
     if (args[0] === '!event') {
         if (
             message.member.roles.find(
-                (r) =>
-                    r.id === EtatMajor || r.id === Officier || r.id === SsOff,
+                (r) => r.id === EtatMajor || r.id === Officier || r.id === SsOff,
             )
         ) {
             switch (args[1]) {
@@ -44,9 +45,7 @@ bot.on('message', (message) => {
                     } else {
                         message.channel
                             .send(
-                                '<@&673597849854017597> Rappel : Entrainement à ' +
-                                    args[2] +
-                                    'h !',
+                                '<@&673597849854017597> Rappel : Entrainement à ' + args[2] + 'h !',
                             )
                             .catch(console.error)
                     }
@@ -103,15 +102,12 @@ bot.on('message', (message) => {
                     break
             }
         } else {
-            message.channel
-                .send("Tu n'as pas le droit d'utiliser le bot")
-                .catch(console.error)
+            message.channel.send("Tu n'as pas le droit d'utiliser le bot").catch(console.error)
         }
     } else if (args[0] === '!recensement') {
         if (
             message.member.roles.find(
-                (r) =>
-                    r.id === EtatMajor || r.id === Officier || r.id === SsOff,
+                (r) => r.id === EtatMajor || r.id === Officier || r.id === SsOff,
             )
         ) {
             let msg =
@@ -122,38 +118,23 @@ bot.on('message', (message) => {
             message.channel
                 .send(msg)
                 .then((sentEmbed) => {
-                    sentEmbed.react(
-                        message.guild.emojis.get('471444733298868248'),
-                    )
-                    sentEmbed.react(
-                        message.guild.emojis.get('471965653113503745'),
-                    )
-                    sentEmbed.react(
-                        message.guild.emojis.get('491942669132496896'),
-                    )
-                    sentEmbed.react(
-                        message.guild.emojis.get('472040303403204608'),
-                    )
-                    sentEmbed.react(
-                        message.guild.emojis.get('473958247460765707'),
-                    )
+                    sentEmbed.react(message.guild.emojis.get('471444733298868248'))
+                    sentEmbed.react(message.guild.emojis.get('471965653113503745'))
+                    sentEmbed.react(message.guild.emojis.get('491942669132496896'))
+                    sentEmbed.react(message.guild.emojis.get('472040303403204608'))
+                    sentEmbed.react(message.guild.emojis.get('473958247460765707'))
                     if (args[1] === 'gde') {
-                        sentEmbed.react(
-                            message.guild.emojis.get('479413424451878913'),
-                        )
+                        sentEmbed.react(message.guild.emojis.get('479413424451878913'))
                     }
                 })
                 .catch(console.error)
         } else {
-            message.channel
-                .send("Tu n'as pas le droit d'utiliser le bot")
-                .catch(console.error)
+            message.channel.send("Tu n'as pas le droit d'utiliser le bot").catch(console.error)
         }
     } else if (args[0] === '!help') {
         if (
             message.member.roles.find(
-                (r) =>
-                    r.id === EtatMajor || r.id === Officier || r.id === SsOff,
+                (r) => r.id === EtatMajor || r.id === Officier || r.id === SsOff,
             )
         ) {
             message.channel
@@ -162,41 +143,32 @@ bot.on('message', (message) => {
                 )
                 .catch(console.error)
         } else {
-            message.channel
-                .send("Tu n'as pas le droit d'utiliser le bot")
-                .catch(console.error)
+            message.channel.send("Tu n'as pas le droit d'utiliser le bot").catch(console.error)
         }
     } else if (args[0] === '!up') {
         if (
             message.member.roles.find(
-                (r) =>
-                    r.id === EtatMajor || r.id === Officier || r.id === SsOff,
+                (r) => r.id === EtatMajor || r.id === Officier || r.id === SsOff,
             )
         ) {
-            message.channel
-                .send(
-                    "Tout va bien, je suis réveillée !",
-                )
-                .catch(console.error)
+            message.channel.send('Tout va bien, je suis réveillée !').catch(console.error)
         } else {
-            message.channel
-                .send("Tu n'as pas le droit d'utiliser le bot")
-                .catch(console.error)
+            message.channel.send("Tu n'as pas le droit d'utiliser le bot").catch(console.error)
         }
     } else if (args[0] === '!presences') {
         const ems = new Array()
         const officiers = new Array()
         const ssoffs = new Array()
-        const chasseurs = new Array()
+        const cavaleries = new Array()
         const grenadiers = new Array()
-        const moyennes = new Array()
-        const jeunes = new Array()
-        const auxs = new Array()
+        const voltigeurs = new Array()
         const canons = new Array()
+        const premieres = new Array()
+        const deuxiemes = new Array()
+        const troisiemes = new Array()
+        const quatriemes = new Array()
         const autres = new Array()
-        const channels = message.guild.channels.filter(
-            (c) => c.type === 'voice',
-        )
+        const channels = message.guild.channels.filter((c) => c.type === 'voice')
         for (const [channelID, channel] of channels) {
             for (const [memberID, member] of channel.members) {
                 if (member.roles.find((r) => r.id === EtatMajor)) {
@@ -217,35 +189,47 @@ bot.on('message', (message) => {
                     } else {
                         ssoffs.push(member.user.username)
                     }
+                } else if (member.roles.find((r) => r.id === Cavalerie)) {
+                    if (member.nickname) {
+                        cavaleries.push(member.nickname)
+                    } else {
+                        cavaleries.push(member.user.username)
+                    }
                 } else if (member.roles.find((r) => r.id === Grenadier)) {
                     if (member.nickname) {
                         grenadiers.push(member.nickname)
                     } else {
                         grenadiers.push(member.user.username)
                     }
-                } else if (member.roles.find((r) => r.id === Chasseur)) {
+                } else if (member.roles.find((r) => r.id === Voltigeur)) {
                     if (member.nickname) {
-                        chasseurs.push(member.nickname)
+                        voltigeurs.push(member.nickname)
                     } else {
-                        chasseurs.push(member.user.username)
+                        voltigeurs.push(member.user.username)
                     }
-                } else if (member.roles.find((r) => r.id === Moyenne)) {
+                } else if (member.roles.find((r) => r.id === Premiere)) {
                     if (member.nickname) {
-                        moyennes.push(member.nickname)
+                        premieres.push(member.nickname)
                     } else {
-                        moyennes.push(member.user.username)
+                        premieres.push(member.user.username)
                     }
-                } else if (member.roles.find((r) => r.id === Jeune)) {
+                } else if (member.roles.find((r) => r.id === Seconde)) {
                     if (member.nickname) {
-                        jeunes.push(member.nickname)
+                        deuxiemes.push(member.nickname)
                     } else {
-                        jeunes.push(member.user.username)
+                        deuxiemes.push(member.user.username)
                     }
-                } else if (member.roles.find((r) => r.id === Aux)) {
+                } else if (member.roles.find((r) => r.id === Troisieme)) {
                     if (member.nickname) {
-                        auxs.push(member.nickname)
+                        troisiemes.push(member.nickname)
                     } else {
-                        auxs.push(member.user.username)
+                        troisiemes.push(member.user.username)
+                    }
+                } else if (member.roles.find((r) => r.id === Quatrieme)) {
+                    if (member.nickname) {
+                        quatriemes.push(member.nickname)
+                    } else {
+                        quatriemes.push(member.user.username)
                     }
                 } else if (member.roles.find((r) => r.id === Canon)) {
                     if (member.nickname) {
@@ -277,35 +261,45 @@ bot.on('message', (message) => {
             message.channel.send('***Sous-officiers :***')
             ssoffs.map((u) => message.channel.send(u))
         }
+        cavaleries.sort()
+        if (cavaleries.length > 0) {
+            message.channel.send('***Dragons :***')
+            cavaleries.map((u) => message.channel.send(u))
+        }
         grenadiers.sort()
         if (grenadiers.length > 0) {
             message.channel.send('***Grenadiers :***')
             grenadiers.map((u) => message.channel.send(u))
         }
-        chasseurs.sort()
-        if (chasseurs.length > 0) {
-            message.channel.send('***Chasseurs :***')
-            chasseurs.map((u) => message.channel.send(u))
-        }
-        moyennes.sort()
-        if (moyennes.length > 0) {
-            message.channel.send('***Moyennes :***')
-            moyennes.map((u) => message.channel.send(u))
-        }
-        jeunes.sort()
-        if (jeunes.length > 0) {
-            message.channel.send('***Jeunes :***')
-            jeunes.map((u) => message.channel.send(u))
-        }
-        auxs.sort()
-        if (auxs.length > 0) {
-            message.channel.send('***Auxiliaires :***')
-            auxs.map((u) => message.channel.send(u))
+        voltigeurs.sort()
+        if (voltigeurs.length > 0) {
+            message.channel.send('***Voltigeurs :***')
+            voltigeurs.map((u) => message.channel.send(u))
         }
         canons.sort()
         if (canons.length > 0) {
             message.channel.send('***Artilleurs :***')
             canons.map((u) => message.channel.send(u))
+        }
+        premieres.sort()
+        if (premieres.length > 0) {
+            message.channel.send('***1ere Compagnie :***')
+            premieres.map((u) => message.channel.send(u))
+        }
+        deuxiemes.sort()
+        if (deuxiemes.length > 0) {
+            message.channel.send('***2nde Compagnie :***')
+            deuxiemes.map((u) => message.channel.send(u))
+        }
+        troisiemes.sort()
+        if (troisiemes.length > 0) {
+            message.channel.send('***3e Compagnie :***')
+            troisiemes.map((u) => message.channel.send(u))
+        }
+        quatriemes.sort()
+        if (quatriemes.length > 0) {
+            message.channel.send('***4e Compagnie :***')
+            quatriemes.map((u) => message.channel.send(u))
         }
         autres.sort()
         if (autres.length > 0) {
