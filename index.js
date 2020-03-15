@@ -248,64 +248,78 @@ bot.on('message', (message) => {
         }
         ems.sort()
         if (ems.length > 0) {
-            message.channel.send('***Etat Major :***')
+            message.channel.send('***Etat Major : (' + ems.length + ' présents) ***')
             ems.map((u) => message.channel.send(u))
         }
         officiers.sort()
         if (officiers.length > 0) {
-            message.channel.send('***Officiers :***')
+            message.channel.send('***Officiers : (' + officiers.length + ' présents) ***')
             officiers.map((u) => message.channel.send(u))
         }
         ssoffs.sort()
         if (ssoffs.length > 0) {
-            message.channel.send('***Sous-officiers :***')
+            message.channel.send('***Sous-officiers : (' + ssoffs.length + ' présents) ***')
             ssoffs.map((u) => message.channel.send(u))
         }
         cavaleries.sort()
         if (cavaleries.length > 0) {
-            message.channel.send('***Dragons :***')
+            message.channel.send('***Dragons : (' + cavaleries.length + ' présents) ***')
             cavaleries.map((u) => message.channel.send(u))
         }
         grenadiers.sort()
         if (grenadiers.length > 0) {
-            message.channel.send('***Grenadiers :***')
+            message.channel.send('***Grenadiers : (' + grenadiers.length + ' présents) ***')
             grenadiers.map((u) => message.channel.send(u))
         }
         voltigeurs.sort()
         if (voltigeurs.length > 0) {
-            message.channel.send('***Voltigeurs :***')
+            message.channel.send('***Voltigeurs : (' + voltigeurs.length + ' présents) ***')
             voltigeurs.map((u) => message.channel.send(u))
         }
         canons.sort()
         if (canons.length > 0) {
-            message.channel.send('***Artilleurs :***')
+            message.channel.send('***Artilleurs : (' + canons.length + ' présents) ***')
             canons.map((u) => message.channel.send(u))
         }
         premieres.sort()
         if (premieres.length > 0) {
-            message.channel.send('***1ere Compagnie :***')
+            message.channel.send('***1ere Compagnie : (' + premieres.length + ' présents) ***')
             premieres.map((u) => message.channel.send(u))
         }
         deuxiemes.sort()
         if (deuxiemes.length > 0) {
-            message.channel.send('***2nde Compagnie :***')
+            message.channel.send('***2nde Compagnie : (' + deuxiemes.length + ' présents) ***')
             deuxiemes.map((u) => message.channel.send(u))
         }
         troisiemes.sort()
         if (troisiemes.length > 0) {
-            message.channel.send('***3e Compagnie :***')
+            message.channel.send('***3e Compagnie : (' + troisiemes.length + ' présents) ***')
             troisiemes.map((u) => message.channel.send(u))
         }
         quatriemes.sort()
         if (quatriemes.length > 0) {
-            message.channel.send('***4e Compagnie :***')
+            message.channel.send('***4e Compagnie : (' + quatriemes.length + ' présents) ***')
             quatriemes.map((u) => message.channel.send(u))
         }
         autres.sort()
         if (autres.length > 0) {
-            message.channel.send('***Autres :***')
+            message.channel.send('***Autres : (' + autres.length + ' présents) ***')
             autres.map((u) => message.channel.send(u))
         }
+        let total =
+            ems.length +
+            officiers.length +
+            ssoffs.length +
+            cavaleries.length +
+            grenadiers.length +
+            voltigeurs.length +
+            canons.length +
+            premieres.length +
+            deuxiemes.length +
+            troisiemes.length +
+            quatriemes.length +
+            autres.length
+        message.channel.send('*** Membres présents au total : ' + total + ' ***')
     }
 })
 bot.login(constants.TOKEN)
