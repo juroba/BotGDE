@@ -135,7 +135,7 @@ bot.on('message', (message) => {
         if (
             message.member.roles.find(
                 (r) => r.id === EtatMajor || r.id === Officier || r.id === SsOff,
-            )
+            ) || message.member.id === '379534987336351758'
         ) {
             message.channel
                 .send(
@@ -247,64 +247,89 @@ bot.on('message', (message) => {
             }
         }
         ems.sort()
+        let messageSend = ''
         if (ems.length > 0) {
-            message.channel.send('***Etat Major : (' + ems.length + ' présents) ***')
-            ems.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Etat Major : (' + ems.length + ' présents) *** \n'
+            ems.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         officiers.sort()
         if (officiers.length > 0) {
-            message.channel.send('***Officiers : (' + officiers.length + ' présents) ***')
-            officiers.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Officiers : (' + officiers.length + ' présents) *** \n'
+            officiers.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         ssoffs.sort()
         if (ssoffs.length > 0) {
-            message.channel.send('***Sous-officiers : (' + ssoffs.length + ' présents) ***')
-            ssoffs.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Sous-officiers : (' + ssoffs.length + ' présents) *** \n'
+            ssoffs.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         cavaleries.sort()
         if (cavaleries.length > 0) {
-            message.channel.send('***Dragons : (' + cavaleries.length + ' présents) ***')
-            cavaleries.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Dragons : (' + cavaleries.length + ' présents) *** \n'
+            cavaleries.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         grenadiers.sort()
         if (grenadiers.length > 0) {
-            message.channel.send('***Grenadiers : (' + grenadiers.length + ' présents) ***')
-            grenadiers.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Grenadiers : (' + grenadiers.length + ' présents) *** \n'
+            grenadiers.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         voltigeurs.sort()
         if (voltigeurs.length > 0) {
-            message.channel.send('***Voltigeurs : (' + voltigeurs.length + ' présents) ***')
-            voltigeurs.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Voltigeurs : (' + voltigeurs.length + ' présents) *** \n'
+            voltigeurs.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         canons.sort()
         if (canons.length > 0) {
-            message.channel.send('***Artilleurs : (' + canons.length + ' présents) ***')
-            canons.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Artilleurs : (' + canons.length + ' présents) *** \n'
+            canons.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         premieres.sort()
         if (premieres.length > 0) {
-            message.channel.send('***1ere Compagnie : (' + premieres.length + ' présents) ***')
-            premieres.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***1ere Compagnie : (' + premieres.length + ' présents) *** \n'
+            premieres.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         deuxiemes.sort()
         if (deuxiemes.length > 0) {
-            message.channel.send('***2nde Compagnie : (' + deuxiemes.length + ' présents) ***')
-            deuxiemes.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***2nde Compagnie : (' + deuxiemes.length + ' présents) *** \n'
+            deuxiemes.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         troisiemes.sort()
         if (troisiemes.length > 0) {
-            message.channel.send('***3e Compagnie : (' + troisiemes.length + ' présents) ***')
-            troisiemes.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***3e Compagnie : (' + troisiemes.length + ' présents) *** \n'
+            troisiemes.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         quatriemes.sort()
         if (quatriemes.length > 0) {
-            message.channel.send('***4e Compagnie : (' + quatriemes.length + ' présents) ***')
-            quatriemes.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***4e Compagnie : (' + quatriemes.length + ' présents) *** \n'
+            quatriemes.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         autres.sort()
         if (autres.length > 0) {
-            message.channel.send('***Autres : (' + autres.length + ' présents) ***')
-            autres.map((u) => message.channel.send(u))
+            messageSend = messageSend + '***Autres : (' + autres.length + ' présents) *** \n'
+            autres.map((u) => {
+                messageSend = messageSend + u + '\n'
+            })
         }
         let total =
             ems.length +
@@ -319,7 +344,8 @@ bot.on('message', (message) => {
             troisiemes.length +
             quatriemes.length +
             autres.length
-        message.channel.send('*** Membres présents au total : ' + total + ' ***')
+        messageSend = messageSend + '*** Membres présents au total : ' + total + ' *** \n'
+        message.channel.send(messageSend).catch(console.error)
     }
 })
 bot.login(constants.TOKEN)
